@@ -2,6 +2,7 @@
 #import <UIKit/UIKit.h>
 
 typedef void (^HHBasicBlock)(void);
+typedef void (^HHTextBlock)(NSString *string);
 typedef void (^HHIterationBlock)(int number);
 typedef void (^HHObserverBlock)(NSDictionary * change);
 typedef void (^HHErrorBLock)(NSError * error);

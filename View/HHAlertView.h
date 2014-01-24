@@ -7,3 +7,8 @@
 - (id)initWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle cancelBlock:(HHBasicBlock)cancelBlock;
 - (void)addButtonWithTitle:(NSString *)title block:(HHBasicBlock)block;
 @end
+
+@interface HHAlertTextView : HHAlertView
+- (id)initWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle cancelBlock:(HHTextBlock)cancelBlock;
+- (void)addButtonWithTitle:(NSString *)title block:(HHTextBlock)block;
+@end

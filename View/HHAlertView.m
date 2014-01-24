@@ -53,3 +53,34 @@
 }
 
 @end
+
+@interface HHAlertTextView ()
+@property (strong, nonatomic) NSMutableArray *blocks;
+@end
+
+@implementation HHAlertTextView
+
+- (id)initWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle cancelBlock:(HHTextBlock)cancelBlock
+{
+    self = [self initWithTitle:title message:message delegate:self cancelButtonTitle:cancelButtonTitle otherButtonTitles:nil];
+    self.alertViewStyle = UIAlertViewStylePlainTextInput;
+    if (self) {
+        [self.blocks addObject:[cancelBlock copy]];
+    }
+    
+    return self;
+}
+
+- (void)addButtonWithTitle:(NSString *)title block:(HHTextBlock)block
+{
+    [self addButtonWithTitle:title];
+    [self.blocks addObject:[block copy]];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    HHTextBlock block = [self.blocks objectAtIndex:buttonIndex];
+    UITextField *tf = [self textFieldAtIndex:0];
+    block(tf.text);
+}
+@end
