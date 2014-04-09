@@ -3,15 +3,15 @@
 
 @implementation UINavigationController (HHKit)
 
-- (void)customBackgroundWithImage:(UIImage *)image withShadowImage:(UIImage *)shadowImage
+- (void)customBackgroundWithImage:(UIImage *)image
 {
     [self.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
 
-    self.navigationBar.shadowImage = shadowImage;
-}
-
-- (void)pushViewControllerWithBlock:(HHViewControllerBlock)viewController animated:(BOOL)animated {
-    [self pushViewController:viewController() animated:animated];
+    self.navigationBar.frame = CGRectMake(0, self.navigationBar.frame.origin.y, self.navigationBar.frame.size.width, 44);
+    
+    if ([self.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)]) { // ios5
+        [self.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+    }
 }
 
 - (void)popWithAnimated
@@ -28,12 +28,6 @@
     NSMutableArray *VCs = [self.viewControllers mutableCopy];
     [VCs removeObjectAtIndex:VCs.count - 2];
     [self setViewControllers:VCs animated:animated];
-}
-
-- (BOOL)isRootViewController:(UIViewController *)viewController
-{
-    UIViewController *rootViewController = [self.viewControllers objectAtIndex:0];
-    return [rootViewController isEqual:viewController];
 }
 
 @end

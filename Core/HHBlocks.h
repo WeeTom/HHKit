@@ -4,6 +4,6 @@
 typedef void (^HHBasicBlock)(void);
 typedef void (^HHTextBlock)(NSString *string);
 typedef void (^HHIterationBlock)(int number);
-typedef void (^HHObserverBlock)(NSDictionary * change);
-typedef void (^HHErrorBLock)(NSError * error);
+typedef void (^HHObserverBlock)(NSDictionary *change);
+typedef void (^HHErrorBlock)(NSError *error);
 typedef UIViewController *(^HHViewControllerBlock)();
