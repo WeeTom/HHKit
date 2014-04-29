@@ -5,6 +5,7 @@
 @interface HHActionSheet : UIActionSheet
 - (id)initWithTitle:(NSString *)title;
 - (NSInteger)addButtonWithTitle:(NSString *)title block:(HHBasicBlock)block;
+- (NSInteger)addButtonWithTitle:(NSString *)title block:(HHBasicBlock)block performAfterDismiss:(BOOL)performAfterDismiss;
 - (NSInteger)addDestructiveButtonWithTitle:(NSString *)title block:(HHBasicBlock)block;
 - (void)addCancelButtonWithTitle:(NSString *)title;
 - (void)addCancelButtonWithTitle:(NSString *)title block:(HHBasicBlock)block;
