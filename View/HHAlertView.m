@@ -38,17 +38,17 @@
     [self.blocks addObject:[block copy]];
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    HHBasicBlock block = [self.blocks objectAtIndex:buttonIndex];
-
-    block();
-}
-
 - (void)alertViewCancel:(UIAlertView *)alertView
 {
     HHBasicBlock block = [self.blocks objectAtIndex:0];
 
+    block();
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    HHBasicBlock block = [self.blocks objectAtIndex:buttonIndex];
+    
     block();
 }
 

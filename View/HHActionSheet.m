@@ -2,7 +2,6 @@
 #import "HHActionSheet.h"
 @interface HHActionSheet () <UIActionSheetDelegate>
 @property (strong, nonatomic) NSMutableArray *blocks;
-@property (strong, nonatomic) NSMutableDictionary *performDic;
 @end
 
 @implementation HHActionSheet
@@ -38,19 +37,6 @@
     return [super addButtonWithTitle:title];
 }
 
-- (NSInteger)addButtonWithTitle:(NSString *)title block:(HHBasicBlock)block performAfterDismiss:(BOOL)performAfterDismiss
-{
-    HHBasicBlock blockCopy = [block copy];
-    [self.blocks addObject:blockCopy];
-    if (performAfterDismiss) {
-        if (!self.performDic) {
-            self.performDic = [NSMutableDictionary dictionary];
-        }
-        [self.performDic setObject:@YES forKey:blockCopy];
-    }
-    return [super addButtonWithTitle:title];
-}
-
 - (NSInteger)addDestructiveButtonWithTitle:(NSString *)title block:(HHBasicBlock)block
 {
     NSInteger index = [self addButtonWithTitle:title block:block];
@@ -70,23 +56,10 @@
     self.cancelButtonIndex = self.numberOfButtons - 1;
 }
 
-- (void)actionSheet:(HHActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    HHBasicBlock block = [self.blocks objectAtIndex:buttonIndex];
-
-    if ([[self.performDic objectForKey:block] boolValue]) {
-        return;
-    }
-    
-    block();
-}
-
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     HHBasicBlock block = [self.blocks objectAtIndex:buttonIndex];
     
-    if ([[self.performDic objectForKey:block] boolValue]) {
-        block();
-    }    
+    block();
 }
 @end
