@@ -77,7 +77,7 @@
     [self.blocks addObject:[block copy]];
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     HHTextBlock block = [self.blocks objectAtIndex:buttonIndex];
     UITextField *tf = [self textFieldAtIndex:0];
