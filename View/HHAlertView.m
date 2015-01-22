@@ -62,8 +62,17 @@
 
 - (id)initWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle cancelBlock:(HHTextBlock)cancelBlock
 {
+    return [self initWithTitle:title message:message cancelButtonTitle:cancelButtonTitle cancelBlock:cancelBlock keyboardType:UIKeyboardTypeDefault];
+}
+
+- (id)initWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle cancelBlock:(HHTextBlock)cancelBlock keyboardType:(UIKeyboardType)type
+{
     self = [self initWithTitle:title message:message delegate:self cancelButtonTitle:cancelButtonTitle otherButtonTitles:nil];
     self.alertViewStyle = UIAlertViewStylePlainTextInput;
+    if (type != UIKeyboardTypeDefault) {
+        UITextField *tf = [self textFieldAtIndex:0];
+        tf.keyboardType = type;
+    }
     if (self) {
         [self.blocks addObject:[cancelBlock copy]];
     }
