@@ -21,13 +21,13 @@
     }
 }
 
-- (void)replaceVisibleViewController:(UIViewController *)viewController animated:(BOOL)animated
+- (void)replaceVisibleViewController:(UIViewController *)viewController
 {
-    [self pushViewController:viewController animated:animated];
+    [self pushViewController:viewController animated:NO];
     
     NSMutableArray *VCs = [self.viewControllers mutableCopy];
     [VCs removeObjectAtIndex:VCs.count - 2];
-    [self setViewControllers:VCs animated:animated];
+    [self setViewControllers:VCs animated:NO];
 }
 
 @end

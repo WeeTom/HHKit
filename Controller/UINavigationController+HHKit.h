@@ -7,5 +7,5 @@
 
 - (void)popWithAnimated;
 
-- (void)replaceVisibleViewController:(UIViewController *)viewController animated:(BOOL)animated;
+- (void)replaceVisibleViewController:(UIViewController *)viewController;
 @end
