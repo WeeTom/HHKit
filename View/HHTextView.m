@@ -7,6 +7,20 @@
 @end
 
 @implementation HHTextView
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidChangeNotification object:nil];
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewDidChange:) name:UITextViewTextDidChangeNotification object:nil];
+    }
+    return self;
+}
+
 - (void)setPlaceholder:(NSString *)placeholder
 {
     CGSize textSize = [placeholder sizeWithFont:self.font forWidth:self.frame.size.width lineBreakMode:NSLineBreakByClipping];
@@ -20,13 +34,6 @@
     self.placeholderLabel.backgroundColor = [UIColor clearColor];
     self.placeholderLabel.frame = CGRectMake(8, 8, textSize.width, textSize.height);
     [self addSubview:self.placeholderLabel];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewDidChange:) name:UITextViewTextDidChangeNotification object:nil];
-}
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidChangeNotification object:nil];
 }
 
 - (void)setFont:(UIFont *)font
