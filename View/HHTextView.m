@@ -21,6 +21,15 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewDidChange:) name:UITextViewTextDidChangeNotification object:nil];
+    }
+    return self;
+}
+
 - (void)setPlaceholder:(NSString *)placeholder
 {
     CGSize textSize = [placeholder sizeWithFont:self.font forWidth:self.frame.size.width lineBreakMode:NSLineBreakByClipping];
