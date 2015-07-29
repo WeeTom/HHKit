@@ -67,9 +67,9 @@
     NSString *content = [self text];
     
     if ([content length] == 0) {
-        self.placeholderLabel.textColor = [UIColor grayColor];
+        self.placeholderLabel.hidden = NO;
     } else {
-        self.placeholderLabel.textColor = [UIColor clearColor];
+        self.placeholderLabel.hidden = YES;
     }
 }
 
