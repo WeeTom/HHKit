@@ -55,7 +55,6 @@
 @end
 
 @interface HHAlertTextView ()
-@property (strong, nonatomic) NSMutableArray *blocks;
 @end
 
 @implementation HHAlertTextView
