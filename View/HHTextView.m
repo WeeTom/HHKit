@@ -32,7 +32,7 @@
 
 - (void)setPlaceholder:(NSString *)placeholder
 {
-    CGSize textSize = [placeholder sizeWithFont:self.font forWidth:self.frame.size.width lineBreakMode:NSLineBreakByClipping];
+    CGSize textSize = [placeholder boundingRectWithSize:CGSizeMake(self.frame.size.width, CGFLOAT_MAX) options:NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:self.font} context:nil].size;
     if (!self.placeholderLabel) {
         self.placeholderLabel = [[UILabel alloc] init];
     }
