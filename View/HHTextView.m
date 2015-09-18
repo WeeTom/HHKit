@@ -35,7 +35,7 @@
     if (!self.font) {
         self.font = [UIFont systemFontOfSize:14];
     }
-    CGSize textSize = [placeholder boundingRectWithSize:CGSizeMake(self.frame.size.width, CGFLOAT_MAX) options:NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:self.font} context:nil].size;
+    CGSize textSize = [placeholder boundingRectWithSize:CGSizeMake(self.frame.size.width, CGFLOAT_MAX) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:self.font} context:nil].size;
     if (!self.placeholderLabel) {
         self.placeholderLabel = [[UILabel alloc] init];
     }
@@ -54,7 +54,7 @@
     
     if (self.placeholderLabel && font) {
         self.placeholderLabel.font = font;
-        CGSize textSize = [self.placeholderLabel.text boundingRectWithSize:CGSizeMake(self.frame.size.width, CGFLOAT_MAX) options:NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:font} context:nil].size;
+        CGSize textSize = [self.placeholderLabel.text boundingRectWithSize:CGSizeMake(self.frame.size.width, CGFLOAT_MAX) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil].size;
         self.placeholderLabel.frame = CGRectMake(8, 8, textSize.width, textSize.height);
     }
 }
