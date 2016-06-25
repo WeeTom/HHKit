@@ -17,7 +17,7 @@
 - (void)popWithAnimated
 {
     if (![self popViewControllerAnimated:YES]) {
-        [self.visibleViewController dismissViewControllerAnimated:YES completion:^{}];
+        [self.visibleViewController dismissViewControllerAnimated:YES completion:nil];
     }
 }
 

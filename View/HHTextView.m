@@ -32,31 +32,20 @@
 
 - (void)setPlaceholder:(NSString *)placeholder
 {
-    if (!self.font) {
-        self.font = [UIFont systemFontOfSize:14];
-    }
-    CGSize textSize = [placeholder boundingRectWithSize:CGSizeMake(self.frame.size.width, CGFLOAT_MAX) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:self.font} context:nil].size;
-    if (!self.placeholderLabel) {
-        self.placeholderLabel = [[UILabel alloc] init];
-    }
-    self.placeholderLabel.font = self.font;
     self.placeholderLabel.text = placeholder;
-    self.placeholderLabel.textColor = [UIColor lightGrayColor];
-    self.placeholderLabel.alpha = 0.45f;
-    self.placeholderLabel.backgroundColor = [UIColor clearColor];
+    CGSize textSize = [self.placeholderLabel.text boundingRectWithSize:CGSizeMake(self.frame.size.width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName : self.placeholderLabel.font} context:nil].size;
     self.placeholderLabel.frame = CGRectMake(8, 8, textSize.width, textSize.height);
     [self addSubview:self.placeholderLabel];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewDidChange:) name:UITextViewTextDidChangeNotification object:nil];
 }
 
 - (void)setFont:(UIFont *)font
 {
     [super setFont:font];
     
-    if (self.placeholderLabel && font) {
-        self.placeholderLabel.font = font;
-        CGSize textSize = [self.placeholderLabel.text boundingRectWithSize:CGSizeMake(self.frame.size.width, CGFLOAT_MAX) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil].size;
-        self.placeholderLabel.frame = CGRectMake(8, 8, textSize.width, textSize.height);
-    }
+    self.placeholderLabel.font = font;
+    CGSize textSize = [self.placeholderLabel.text boundingRectWithSize:CGSizeMake(self.frame.size.width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName : self.placeholderLabel.font} context:nil].size;
+    self.placeholderLabel.frame = CGRectMake(8, 8, textSize.width, textSize.height);
 }
 
 - (void)setText:(NSString *)text
@@ -74,6 +63,19 @@
     } else {
         self.placeholderLabel.hidden = YES;
     }
+}
+
+#pragma mark - Property
+- (UILabel *)placeholderLabel
+{
+    if (!_placeholderLabel) {
+        _placeholderLabel = [[UILabel alloc] init];
+        _placeholderLabel.textColor = [UIColor colorWithWhite:0.7f alpha:1];
+        _placeholderLabel.backgroundColor = [UIColor clearColor];
+        _placeholderLabel.font = self.font;
+    }
+    
+    return _placeholderLabel;
 }
 
 @end
