@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.author                = { "George Shen" => "georgeshen@huohua.in" }
   s.platform              = :ios
   s.ios.deployment_target = '7.0'
-  s.source                = { :git => "https://github.com/Huohua/HHKit.git", :tag => s.version }
+  s.source                = { :git => "https://github.com/WeeTom/HHKit.git", :tag => s.version }
   s.source_files          = 'Controller', 'Core', 'Other', 'View', 'HHKit.h' 
   s.requires_arc          = true
 end
