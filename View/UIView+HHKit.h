@@ -2,20 +2,20 @@
 #import <UIKit/UIKit.h>
 
 @interface UIView (HHKit)
-@property (assign, nonatomic) CGPoint offset;
-@property (assign, nonatomic) CGSize size;
+@property (assign, nonatomic) CGPoint hh_origin;
+@property (assign, nonatomic) CGSize hh_size;
 
-@property (assign, nonatomic) CGFloat offsetX;
-@property (assign, nonatomic) CGFloat offsetY;
-@property (assign, nonatomic) CGFloat width;
-@property (assign, nonatomic) CGFloat height;
+@property (assign, nonatomic) CGFloat hh_originX;
+@property (assign, nonatomic) CGFloat hh_originY;
+@property (assign, nonatomic) CGFloat hh_width;
+@property (assign, nonatomic) CGFloat hh_height;
 
-@property (readonly) CGFloat right;
-@property (readonly) CGFloat bottom;
+@property (readonly) CGFloat hh_right;
+@property (readonly) CGFloat hh_bottom;
 
 
-- (void)show;
-- (void)hide;
-- (void)fadeInWithDuration:(NSTimeInterval)duration;
-- (void)fadeOutWithDuration:(NSTimeInterval)duration;
+- (void)hh_show;
+- (void)hh_hide;
+- (void)hh_fadeInWithDuration:(NSTimeInterval)duration;
+- (void)hh_fadeOutWithDuration:(NSTimeInterval)duration;
 @end

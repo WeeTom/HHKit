@@ -3,97 +3,97 @@
 
 @implementation UIView (HHKit)
 
-- (CGPoint)offset
+- (CGPoint)hh_origin
 {
-    return CGPointMake(self.offsetX, self.offsetY);
+    return CGPointMake(self.hh_originX, self.hh_originY);
 }
 
-- (void)setOffset:(CGPoint)offset
+- (void)setHh_origin:(CGPoint)hh_origin
 {
-    self.frame = CGRectMake(offset.x, offset.y, self.width, self.height);
+    self.frame = CGRectMake(hh_origin.x, hh_origin.y, self.hh_width, self.hh_height);
 }
 
-- (CGSize)size
+- (CGSize)hh_size
 {
-    return CGSizeMake(self.width, self.height);
+    return CGSizeMake(self.hh_width, self.hh_height);
 }
 
-- (void)setSize:(CGSize)size
+- (void)setHh_size:(CGSize)hh_size
 {
-    self.frame = CGRectMake(self.offsetX, self.offsetY, size.width, size.height);
+    self.frame = CGRectMake(self.hh_originX, self.hh_originY, hh_size.width, hh_size.height);
 }
 
-- (CGFloat)offsetX
+- (CGFloat)hh_originX
 {
     return self.frame.origin.x;
 }
 
-- (void)setOffsetX:(CGFloat)offsetX
+- (void)setHh_originX:(CGFloat)hh_originX
 {
-    self.frame = CGRectMake(offsetX, self.offsetY, self.width, self.height);
+    self.frame = CGRectMake(hh_originX, self.hh_originY, self.hh_width, self.hh_height);
 }
 
-- (CGFloat)offsetY
+- (CGFloat)hh_originY
 {
     return self.frame.origin.y;
 }
 
-- (void)setOffsetY:(CGFloat)offsetY
+- (void)setHh_originY:(CGFloat)hh_originY
 {
-    self.frame = CGRectMake(self.offsetX, offsetY, self.width, self.height);
+    self.frame = CGRectMake(self.hh_originX, hh_originY, self.hh_width, self.hh_height);
 }
 
-- (CGFloat)width
+- (CGFloat)hh_width
 {
     return self.frame.size.width;
 }
 
-- (void)setWidth:(CGFloat)width
+- (void)setHh_width:(CGFloat)hh_width
 {
-    self.frame = CGRectMake(self.offsetX, self.offsetY, width, self.height);
+    self.frame = CGRectMake(self.hh_originX, self.hh_originY, hh_width, self.hh_height);
 }
 
-- (CGFloat)height
+- (CGFloat)hh_height
 {
     return self.frame.size.height;
 }
 
-- (void)setHeight:(CGFloat)height
+- (void)setHh_height:(CGFloat)hh_height
 {
-    self.frame = CGRectMake(self.offsetX, self.offsetY, self.width, height);
+    self.frame = CGRectMake(self.hh_originX, self.hh_originY, self.hh_width, hh_height);
 }
 
-- (CGFloat)right
+- (CGFloat)hh_right
 {
-    return self.offsetX + self.width;
+    return self.hh_originX + self.hh_width;
 }
 
-- (CGFloat)bottom
+- (CGFloat)hh_bottom
 {
-    return self.offsetY + self.height;
+    return self.hh_originY + self.hh_height;
 }
 
 
 #pragma mark - Alpha
-- (void)show
+- (void)hh_show
 {
     self.alpha = 1;
 }
 
-- (void)hide
+- (void)hh_hide
 {
     self.alpha = 0;
 }
 
 #pragma mark - Animation
-- (void)fadeInWithDuration:(NSTimeInterval)duration
+- (void)hh_fadeInWithDuration:(NSTimeInterval)duration
 {
     [UIView animateWithDuration:duration animations:^{
         self.alpha = 1;
     }];
 }
 
-- (void)fadeOutWithDuration:(NSTimeInterval)duration
+- (void)hh_fadeOutWithDuration:(NSTimeInterval)duration
 {
     [UIView animateWithDuration:duration animations:^{
         self.alpha = 0;
